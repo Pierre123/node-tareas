@@ -65,9 +65,22 @@ const borrarTarea = (descripcion) => {
     }
 }
 
+const getListadoFiltrado = (completado) => {
+    cargarDb();
+    const listadoFiltro = listadoPorHacer.filter(tarea => tarea.completado === completado);
+    console.log(listadoFiltro);
+    if (listadoPorHacer.length !== listadoFiltro.length) {
+        listadoPorHacer = listadoFiltro;
+        return listadoFiltro;
+    } else {
+        return listadoPorHacer;
+    }
+};
+
 module.exports = {
     crear,
     getListado,
     actualizarTarea,
-    borrarTarea
+    borrarTarea,
+    getListadoFiltrado
 }
